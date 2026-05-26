@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>López Mallo & Asociados — Estudio Jurídico</title>
+  <meta name="description" content="Estudio jurídico especializado en Derecho Laboral, ART, Accidentes de trabajo y Derecho de Familia. Defendemos tus derechos en Madariaga, Mar de Ajo y Pinamar. Consulta gratuita." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #ffffff;
+      --navy2:  #f5f6f9;
+      --navy3:  #ffffff;
+      --gold:   #b8862a;
+      --gold2:  #c9a84c;
+      --white:  #1a1a2e;
+      --gray:   #6b7280;
+      --light:  #374151;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      padding: 14px 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(255,255,255,.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(184,134,42,.2);
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none;
+    }
+    .nav-logo img {
+      height: 40px; width: 40px;
+      object-fit: contain; border-radius: 6px;
+    }
+    .nav-logo-text {
+      display: flex; flex-direction: column; line-height: 1.2;
+    }
+    .nav-logo-text span:first-child {
+      font-family: 'Playfair Display', serif;
+      font-size: .95rem; font-weight: 700;
+      color: var(--gold); letter-spacing: .03em;
+    }
+    .nav-logo-text span:last-child {
+      font-size: .62rem; color: var(--gray);
+      letter-spacing: .1em; text-transform: uppercase;
+    }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      color: #374151; font-size: .85rem; text-decoration: none;
+      font-weight: 500; letter-spacing: .04em; text-transform: uppercase;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      background: var(--gold); color: #ffffff;
+      padding: 10px 22px; border-radius: 4px;
+      font-size: .83rem; font-weight: 700;
+      text-decoration: none; letter-spacing: .04em;
+      transition: background .2s, transform .15s;
+      white-space: nowrap;
+    }
+    .nav-cta:hover { background: var(--gold2); transform: translateY(-1px); }
+    .nav-que-hacer {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(184,134,42,.1); border: 1.5px solid rgba(184,134,42,.4);
+      color: var(--gold); padding: 9px 18px; border-radius: 4px;
+      font-size: .83rem; font-weight: 700;
+      text-decoration: none; letter-spacing: .04em;
+      transition: all .2s; white-space: nowrap;
+    }
+    .nav-que-hacer:hover { background: rgba(184,134,42,.18); }
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 4px; background: none; border: none;
+    }
+    .hamburger span {
+      width: 24px; height: 2px; background: var(--gold);
+      border-radius: 2px; transition: all .3s; display: block;
+    }
+    .mobile-menu {
+      display: none; position: fixed;
+      top: 68px; left: 0; right: 0;
+      background: rgba(255,255,255,.98);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(184,134,42,.2);
+      padding: 20px 24px; z-index: 99;
+      flex-direction: column; gap: 4px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      padding: 13px 16px; border-radius: 8px;
+      color: #374151; font-size: .92rem; font-weight: 500;
+      text-decoration: none; transition: background .2s, color .2s;
+    }
+    .mobile-menu a:hover { background: rgba(184,134,42,.08); color: var(--gold); }
+    .mobile-menu a.highlight { color: var(--gold); font-weight: 700; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+      padding: 120px 40px 80px;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(184,134,42,.06) 0%, transparent 70%),
+                  linear-gradient(135deg, #ffffff 0%, #f8f6f1 50%, #f3f0e8 100%);
+    }
+    .hero-grid-lines {
+      position: absolute; inset: 0; opacity: .06;
+      background-image:
+        linear-gradient(var(--gold) 1px, transparent 1px),
+        linear-gradient(90deg, var(--gold) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      max-width: 680px;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(201,168,76,.12); border: 1px solid rgba(201,168,76,.35);
+      color: var(--gold); padding: 7px 16px; border-radius: 30px;
+      font-size: .78rem; font-weight: 600; letter-spacing: .08em;
+      text-transform: uppercase; margin-bottom: 28px;
+    }
+    .hero-badge::before { content: '⚖️'; font-size: .9rem; }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 900; line-height: 1.12;
+      color: var(--white); margin-bottom: 24px;
+    }
+    h1 span { color: var(--gold); }
+    .hero-sub {
+      font-size: 1.05rem; color: var(--gray);
+      line-height: 1.7; margin-bottom: 20px; max-width: 540px;
+    }
+    .hero-areas {
+      display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 40px;
+    }
+    .area-tag {
+      background: rgba(201,168,76,.08); border: 1px solid rgba(201,168,76,.25);
+      color: var(--gold2); padding: 6px 14px; border-radius: 3px;
+      font-size: .78rem; font-weight: 600; letter-spacing: .06em;
+    }
+    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #25d366; color: #fff;
+      padding: 16px 30px; border-radius: 6px;
+      font-size: .95rem; font-weight: 700;
+      text-decoration: none; transition: background .2s, transform .15s;
+    }
+    .btn-primary:hover { background: #1ebe5d; transform: translateY(-2px); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 10px;
+      border: 1.5px solid rgba(201,168,76,.5); color: var(--gold);
+      padding: 16px 30px; border-radius: 6px;
+      font-size: .95rem; font-weight: 600;
+      text-decoration: none; transition: border-color .2s, background .2s;
+    }
+    .btn-secondary:hover { border-color: var(--gold); background: rgba(201,168,76,.07); }
+
+    .hero-stats {
+      position: absolute; right: 6%; top: 50%; transform: translateY(-50%);
+      display: flex; flex-direction: column; gap: 20px; z-index: 2;
+    }
+    .stat-card {
+      background: #ffffff; border: 1px solid rgba(184,134,42,.25);
+      box-shadow: 0 4px 24px rgba(0,0,0,.08);
+      backdrop-filter: blur(8px); border-radius: 10px;
+      padding: 22px 28px; text-align: center;
+      min-width: 140px;
+    }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem; font-weight: 900; color: var(--gold);
+    }
+    .stat-label { font-size: .75rem; color: var(--gray); margin-top: 4px; text-transform: uppercase; letter-spacing: .06em; }
+
+    /* ── SECTIONS COMMON ── */
+    section { padding: 100px 40px; }
+    .section-label {
+      display: inline-block;
+      color: var(--gold); font-size: .75rem; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700; line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .section-sub { color: var(--gray); font-size: 1rem; line-height: 1.7; max-width: 600px; }
+    .divider { width: 60px; height: 3px; background: var(--gold); margin: 20px 0 0; border-radius: 2px; }
+
+    /* ── SERVICES ── */
+    .services { background: var(--navy2); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px; margin-top: 60px;
+    }
+    .service-card {
+      background: var(--navy3); border: 1px solid rgba(201,168,76,.15);
+      border-radius: 12px; padding: 36px 30px;
+      transition: border-color .25s, transform .25s, box-shadow .25s;
+      position: relative; overflow: hidden;
+    }
+    .service-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 3px; background: linear-gradient(90deg, var(--gold), transparent);
+      opacity: 0; transition: opacity .25s;
+    }
+    .service-card:hover { border-color: rgba(184,134,42,.4); transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,.1); }
+    .service-card:hover::before { opacity: 1; }
+    .service-icon { font-size: 2.4rem; margin-bottom: 20px; }
+    .service-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem; font-weight: 700;
+      color: var(--white); margin-bottom: 12px;
+    }
+    .service-card p { color: var(--gray); font-size: .9rem; line-height: 1.65; }
+    .service-card ul { list-style: none; margin-top: 16px; }
+    .service-card ul li {
+      color: var(--gray); font-size: .85rem;
+      padding: 4px 0; padding-left: 16px; position: relative;
+    }
+    .service-card ul li::before { content: '→'; position: absolute; left: 0; color: var(--gold); }
+
+    /* tambien */
+    .tambien-section {
+      background: var(--navy2);
+      padding-top: 0;
+    }
+    .tambien-box {
+      max-width: 1200px; margin: 0 auto;
+      background: var(--navy3); border: 1px solid rgba(201,168,76,.2);
+      border-radius: 12px; padding: 36px 40px;
+    }
+    .tambien-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; font-weight: 700;
+      color: var(--white); margin-bottom: 20px;
+    }
+    .tambien-tags { display: flex; flex-wrap: wrap; gap: 12px; }
+    .tambien-tag {
+      display: flex; align-items: center; gap: 8px;
+      background: rgba(201,168,76,.07); border: 1px solid rgba(201,168,76,.2);
+      color: var(--light); padding: 10px 18px; border-radius: 8px;
+      font-size: .88rem; font-weight: 500;
+      transition: all .2s;
+    }
+    .tambien-tag:hover { border-color: var(--gold); color: var(--gold); }
+    .tambien-tag span { color: var(--gold); }
+
+    /* ── QUIÉN ES ── */
+    .team { background: var(--navy); }
+    .team-inner {
+      max-width: 1200px; margin: 0 auto;
+    }
+    .team-layout {
+      display: grid; grid-template-columns: 300px 1fr;
+      gap: 70px; align-items: center; margin-top: 60px;
+    }
+    .team-photo-wrap {
+      width: 280px; height: 280px;
+      border-radius: 50%; overflow: hidden;
+      border: 3px solid var(--gold);
+      box-shadow: 0 0 0 6px rgba(184,134,42,.12), 0 20px 40px rgba(0,0,0,.12);
+      transition: box-shadow .3s, transform .3s;
+      margin: 0 auto;
+    }
+    .team-photo-wrap:hover { transform: scale(1.03); box-shadow: 0 0 0 8px rgba(184,134,42,.2), 0 24px 48px rgba(0,0,0,.15); }
+    .team-photo-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: top center;
+    }
+    .team-text {}
+    .team-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem; font-weight: 700; color: var(--white); margin-bottom: 4px;
+    }
+    .team-role {
+      color: var(--gold); font-size: .82rem; font-weight: 600;
+      letter-spacing: .08em; text-transform: uppercase; margin-bottom: 24px;
+    }
+    .team-bio { color: var(--gray); font-size: .97rem; line-height: 1.8; margin-bottom: 16px; }
+    .team-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+    .team-tag {
+      background: rgba(201,168,76,.08); border: 1px solid rgba(201,168,76,.25);
+      color: var(--gold2); padding: 6px 14px; border-radius: 3px;
+      font-size: .75rem; font-weight: 600; letter-spacing: .06em;
+    }
+
+    /* ── CASO ── */
+    .caso { background: var(--navy2); }
+    .caso-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 70px; align-items: start; margin-top: 60px;
+      max-width: 1200px; margin-left: auto; margin-right: auto;
+    }
+    .caso-text {}
+    .caso-quote {
+      background: rgba(201,168,76,.08); border-left: 4px solid var(--gold);
+      padding: 24px 28px; border-radius: 0 8px 8px 0; margin: 28px 0;
+    }
+    .caso-quote p {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; font-style: italic; color: var(--light); line-height: 1.6;
+    }
+    .caso-result {
+      display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px;
+    }
+    .result-badge {
+      background: rgba(37,211,102,.1); border: 1px solid rgba(37,211,102,.3);
+      color: #16a34a; padding: 8px 16px; border-radius: 20px;
+      font-size: .8rem; font-weight: 700;
+    }
+    .caso-img-wrap {
+      border-radius: 14px; overflow: hidden;
+      border: 2px solid rgba(201,168,76,.25);
+      box-shadow: 0 24px 60px rgba(0,0,0,.12);
+      position: sticky; top: 100px;
+    }
+    .caso-img-wrap img {
+      width: 100%; display: block;
+      object-fit: cover; object-position: top center;
+      aspect-ratio: 3/4;
+    }
+    .caso-img-overlay {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,.6));
+      padding: 30px 24px 20px;
+      color: white;
+    }
+    .caso-img-wrap { position: relative; }
+
+    /* ── PROCESO ── */
+    .proceso { background: var(--navy); }
+    .proceso-steps {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+      gap: 0; margin-top: 60px; position: relative;
+    }
+    .step {
+      padding: 40px 30px; text-align: center; position: relative;
+    }
+    .step:not(:last-child)::after {
+      content: '→'; position: absolute; right: 0; top: 50%;
+      transform: translateY(-50%); color: var(--gold); font-size: 1.4rem;
+    }
+    .step-num {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: rgba(201,168,76,.1); border: 2px solid var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 900;
+      color: var(--gold); margin: 0 auto 20px;
+    }
+    .step h4 { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--white); margin-bottom: 10px; }
+    .step p { color: var(--gray); font-size: .85rem; line-height: 1.6; }
+
+    /* ── SUCURSALES ── */
+    .sucursales { background: var(--navy2); }
+    .suc-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px; margin-top: 50px; max-width: 1200px; margin-left: auto; margin-right: auto;
+    }
+    .suc-card {
+      background: var(--navy3); border: 1px solid rgba(201,168,76,.18);
+      border-radius: 12px; padding: 32px 28px;
+      transition: transform .25s, box-shadow .25s, border-color .25s;
+    }
+    .suc-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,.1); border-color: rgba(184,134,42,.4); }
+    .suc-num {
+      font-size: .7rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--gold2); margin-bottom: 10px;
+    }
+    .suc-city {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem; font-weight: 700; color: var(--white); margin-bottom: 6px;
+    }
+    .suc-address { color: var(--gray); font-size: .9rem; line-height: 1.55; margin-bottom: 20px; }
+    .suc-divider { width: 100%; height: 1px; background: rgba(201,168,76,.15); margin-bottom: 16px; }
+    .suc-map {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: .78rem; font-weight: 600; letter-spacing: .06em;
+      color: var(--gold); text-decoration: none; text-transform: uppercase;
+      transition: gap .25s;
+    }
+    .suc-map:hover { gap: 10px; }
+    .horarios-box {
+      max-width: 1200px; margin: 32px auto 0;
+      background: var(--navy3); border: 1px solid rgba(201,168,76,.18);
+      border-radius: 12px; padding: 28px 36px;
+      display: flex; align-items: center; gap: 50px; flex-wrap: wrap;
+    }
+    .horarios-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 3px;
+    }
+    .horarios-sub { font-size: .78rem; color: var(--gray); }
+    .horarios-items { display: flex; gap: 30px; flex-wrap: wrap; }
+    .horarios-item { display: flex; flex-direction: column; gap: 3px; }
+    .horarios-days { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--gold); }
+    .horarios-time { font-size: 1.1rem; font-weight: 600; color: var(--white); }
+
+    /* ── CTA BOTTOM ── */
+    .cta-section {
+      background: linear-gradient(135deg, var(--navy3) 0%, var(--navy2) 100%);
+      border-top: 1px solid rgba(201,168,76,.15);
+      border-bottom: 1px solid rgba(201,168,76,.15);
+      text-align: center; padding: 100px 40px;
+    }
+    .cta-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700; margin-bottom: 16px;
+    }
+    .cta-section p { color: var(--gray); font-size: 1rem; max-width: 520px; margin: 0 auto 40px; line-height: 1.7; }
+    .cta-free {
+      display: inline-block; margin-top: 16px;
+      color: var(--gray); font-size: .83rem;
+    }
+    .cta-free span { color: var(--gold); font-weight: 600; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #050810; padding: 50px 40px 30px;
+      border-top: 1px solid rgba(201,168,76,.1);
+    }
+    .footer-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: flex-start;
+      flex-wrap: wrap; gap: 40px; margin-bottom: 40px;
+    }
+    .footer-brand h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; color: var(--gold); margin-bottom: 10px;
+    }
+    .footer-brand p { color: #9ca3af; font-size: .85rem; line-height: 1.65; max-width: 280px; }
+    .footer-links h4 { color: #f0ede5; font-size: .85rem; font-weight: 700; margin-bottom: 16px; letter-spacing: .06em; }
+    .footer-links ul { list-style: none; }
+    .footer-links ul li { margin-bottom: 8px; }
+    .footer-links ul li a { color: #9ca3af; font-size: .84rem; text-decoration: none; transition: color .2s; }
+    .footer-links ul li a:hover { color: var(--gold); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.06);
+      padding-top: 24px; text-align: center;
+      color: #9ca3af; font-size: .8rem;
+    }
+    .footer-bottom a { color: var(--gold); text-decoration: none; }
+
+    /* ── WHATSAPP FLOAT ── */
+    .wa-float {
+      position: fixed; bottom: 30px; right: 30px; z-index: 999;
+      width: 60px; height: 60px; border-radius: 50%;
+      background: #25d366;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,.4);
+      text-decoration: none;
+      animation: pulse-wa 2.5s infinite;
+    }
+    .wa-float svg { width: 32px; height: 32px; fill: white; }
+    @keyframes pulse-wa {
+      0%,100% { box-shadow: 0 4px 20px rgba(37,211,102,.4); }
+      50%      { box-shadow: 0 4px 32px rgba(37,211,102,.7), 0 0 0 10px rgba(37,211,102,.1); }
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 900px) {
+      nav { padding: 14px 20px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .nav-cta { display: none; }
+      .hero { padding: 110px 24px 60px; min-height: auto; }
+      .hero-stats { position: static; transform: none; flex-direction: row; flex-wrap: wrap; justify-content: center; margin-top: 40px; }
+      .hero-content { max-width: 100%; }
+      section { padding: 70px 24px; }
+      .team-layout { grid-template-columns: 1fr; text-align: center; }
+      .team-photo-wrap { width: 220px; height: 220px; }
+      .team-tags { justify-content: center; }
+      .caso-inner { grid-template-columns: 1fr; }
+      .caso-img-wrap { order: -1; }
+      .caso-img-wrap { position: static; }
+      .step:not(:last-child)::after { display: none; }
+      footer { padding: 40px 24px 24px; }
+      .footer-inner { flex-direction: column; }
+      .horarios-box { gap: 20px; padding: 24px; }
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2.1rem; }
+      .hero-btns { flex-direction: column; }
+      .btn-primary, .btn-secondary { justify-content: center; }
+      .suc-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="assets/logo.jpg" alt="López Mallo & Asociados" />
+    <div class="nav-logo-text">
+      <span>López Mallo & Asociados</span>
+      <span>Estudio Jurídico</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#servicios">Especialidades</a></li>
+    <li><a href="#quienes-somos">El Estudio</a></li>
+    <li><a href="#sucursales">Sucursales</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <a href="que-hacer.html" class="nav-que-hacer">⚖️ ¿Qué hacer?</a>
+    <a class="nav-cta" href="https://wa.me/549?text=Hola%2C%20quisiera%20consultar%20sobre%20mi%20caso." target="_blank" rel="noopener">
+      📲 Consulta gratis
+    </a>
+    <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#servicios"    onclick="closeMobileMenu()">Especialidades</a>
+  <a href="#quienes-somos" onclick="closeMobileMenu()">El Estudio</a>
+  <a href="#sucursales"   onclick="closeMobileMenu()">Sucursales</a>
+  <a href="#contacto"     onclick="closeMobileMenu()">Contacto</a>
+  <a href="que-hacer.html" class="highlight">⚖️ ¿Qué hacer?</a>
+</div>
+
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">Estudio Jurídico · Partido de la Costa</div>
+    <h1>Tu trabajo<br />merece ser<br /><span>defendido.</span></h1>
+    <p class="hero-sub">
+      Especialistas en <strong>Derecho Laboral</strong> en el Partido de la Costa. Accidentes de trabajo, despidos, ART y enfermedades profesionales. Tres sedes para estar cerca tuyo.
+    </p>
+    <div class="hero-areas">
+      <span class="area-tag">Accidentes de Trabajo</span>
+      <span class="area-tag">ART</span>
+      <span class="area-tag">Despidos</span>
+      <span class="area-tag">Trabajo en Negro</span>
+      <span class="area-tag">Derecho de Familia</span>
+    </div>
+    <div class="hero-btns">
+      <a class="btn-primary" href="https://wa.me/549?text=Hola%2C%20quisiera%20consultar%20sobre%20mi%20caso." target="_blank" rel="noopener">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.556 4.122 1.527 5.854L0 24l6.335-1.511A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.003-1.37l-.36-.214-3.728.889.926-3.618-.236-.373A9.818 9.818 0 0 1 2.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/></svg>
+        Consulta por WhatsApp
+      </a>
+      <a class="btn-secondary" href="#servicios">
+        Ver especialidades →
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat-card">
+      <div class="stat-num">346</div>
+      <div class="stat-label">Casos<br />publicados</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Sedes en<br />la Costa</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Consulta<br />sin cargo</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- SERVICIOS -->
+<section class="services" id="servicios">
+  <div style="max-width:1200px;margin:0 auto;">
+    <span class="section-label">Áreas de práctica</span>
+    <h2 class="section-title">¿En qué podemos ayudarte?</h2>
+    <p class="section-sub">Somos especialistas en Derecho Laboral. Defendemos los derechos del trabajador frente a empleadores y aseguradoras de riesgos del trabajo en el Partido de la Costa.</p>
+    <div class="divider"></div>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🦺</div>
+        <h3>Accidentes de Trabajo</h3>
+        <p>Reclamamos la indemnización que te corresponde cuando sufrís un accidente durante tu jornada laboral o en el cumplimiento de tus tareas.</p>
+        <ul>
+          <li>Accidentes en planta o establecimiento</li>
+          <li>Lesiones por esfuerzo o sobrecarga</li>
+          <li>Secuelas e incapacidades permanentes</li>
+          <li>Reclamo civil complementario</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🫁</div>
+        <h3>Enfermedades Profesionales</h3>
+        <p>Gestionamos el reconocimiento y la indemnización de enfermedades causadas o agravadas por las condiciones y el ambiente de trabajo.</p>
+        <ul>
+          <li>Hipoacusia y problemas auditivos</li>
+          <li>Lesiones columnarias y musculares</li>
+          <li>Patologías respiratorias</li>
+          <li>Estrés laboral crónico</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📋</div>
+        <h3>Despidos</h3>
+        <p>Te asesoramos y representamos ante despidos injustificados, discriminatorios o situaciones de extinción del vínculo laboral que no respetan tus derechos.</p>
+        <ul>
+          <li>Despido sin causa justificada</li>
+          <li>Despido discriminatorio</li>
+          <li>Liquidaciones incorrectas</li>
+          <li>Despido por WhatsApp o mensaje</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🕵️</div>
+        <h3>Trabajo en Negro</h3>
+        <p>Si trabajaste sin contrato o sin estar registrado en blanco, tenés derechos. Te ayudamos a acreditar la relación laboral y reclamar lo que te corresponde.</p>
+        <ul>
+          <li>Reconocimiento de antigüedad</li>
+          <li>Cobro de aportes adeudados</li>
+          <li>Indemnizaciones especiales</li>
+          <li>Regularización laboral</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🛵</div>
+        <h3>Accidentes In Itinere</h3>
+        <p>Los accidentes en el trayecto entre tu domicilio y el trabajo también están cubiertos por la ley. Reclamamos ante la ART para que cobres lo que te corresponde.</p>
+        <ul>
+          <li>Accidentes de tránsito en trayecto laboral</li>
+          <li>Lesiones físicas y secuelas</li>
+          <li>Reclamo ante ART y empleador</li>
+          <li>Incapacidades laborativas</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏥</div>
+        <h3>Reclamos ante la ART</h3>
+        <p>Las Aseguradoras de Riesgos del Trabajo suelen rechazar o minimizar los pagos. Te representamos para que recibas la cobertura y la indemnización completa.</p>
+        <ul>
+          <li>Rechazo de siniestros por ART</li>
+          <li>Subestimación del grado de incapacidad</li>
+          <li>Alta médica prematura</li>
+          <li>Cobro de prestaciones adeudadas</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TAMBIÉN ASESORAMOS -->
+<section class="tambien-section">
+  <div style="max-width:1200px;margin:0 auto;padding:0 40px;">
+    <div class="tambien-box">
+      <h3>También te asesoramos en Derecho de Familia</h3>
+      <div class="tambien-tags">
+        <div class="tambien-tag"><span>👨‍👩‍👧</span> Sucesiones</div>
+        <div class="tambien-tag"><span>💔</span> Divorcios</div>
+        <div class="tambien-tag"><span>⚡</span> Amparos</div>
+        <div class="tambien-tag"><span>🍽️</span> Cuota alimentaria</div>
+        <div class="tambien-tag"><span>🏠</span> Cuidado personal</div>
+        <div class="tambien-tag"><span>📞</span> Régimen de comunicación</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- QUIÉNES SOMOS -->
+<section class="team" id="quienes-somos">
+  <div class="team-inner" style="text-align:center;">
+    <span class="section-label">El Estudio</span>
+    <h2 class="section-title">¿Quiénes somos?</h2>
+    <p class="section-sub" style="margin:0 auto 0;">
+      Somos un estudio jurídico especializado en Derecho Laboral, comprometido con defender los derechos de los trabajadores del Partido de la Costa. Con presencia en tres ciudades, estamos siempre cerca tuyo para acompañarte en tu caso.
+    </p>
+    <div class="divider" style="margin:20px auto 0;"></div>
+
+    <div class="team-layout">
+      <div>
+        <div class="team-photo-wrap">
+          <img src="assets/Elíseo López Mallo.png" alt="Dr. Elíseo López Mallo" loading="lazy" />
+        </div>
+      </div>
+      <div class="team-text" style="text-align:left;">
+        <div class="team-name">Dr. Elíseo López Mallo</div>
+        <div class="team-role">Abogado · Derecho Laboral · Partido de la Costa</div>
+        <p class="team-bio">
+          El Dr. Elíseo López Mallo es abogado especializado en Derecho Laboral, egresado de la Universidad Nacional y con formación de posgrado en Derecho del Trabajo y la Seguridad Social. A lo largo de su trayectoria profesional se ha dedicado exclusivamente a la defensa de los derechos de los trabajadores frente a empleadores y aseguradoras de riesgos del trabajo.
+        </p>
+        <p class="team-bio">
+          Con sólida experiencia en causas por accidentes de trabajo, enfermedades profesionales, despidos y reclamos ante la ART, el Dr. López Mallo representa a sus clientes con rigor jurídico y compromiso personal. Desde las sedes de Madariaga, Mar de Ajo y Pinamar, atiende casos de todo el Partido de la Costa con el mismo nivel de excelencia.
+        </p>
+        <div class="team-tags">
+          <span class="team-tag">Derecho Laboral</span>
+          <span class="team-tag">ART</span>
+          <span class="team-tag">Accidentes de Trabajo</span>
+          <span class="team-tag">Derecho de Familia</span>
+          <span class="team-tag">Partido de la Costa</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- PROCESO -->
+<section class="proceso" id="proceso">
+  <div style="max-width:1200px;margin:0 auto;text-align:center;">
+    <span class="section-label">¿Cómo trabajamos?</span>
+    <h2 class="section-title">Tu caso, paso a paso</h2>
+    <p class="section-sub" style="margin:0 auto;">Desde el primer contacto hasta la resolución de tu caso, estamos con vos en cada etapa del proceso.</p>
+    <div class="divider" style="margin:20px auto 0;"></div>
+
+    <div class="proceso-steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>Consulta gratuita</h4>
+        <p>Nos contás tu situación por WhatsApp o en persona, sin costo y sin compromiso. Analizamos juntos tu caso.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>Análisis legal</h4>
+        <p>Estudiamos tu caso en profundidad y te explicamos claramente cuáles son tus derechos y las opciones disponibles.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>Estrategia</h4>
+        <p>Diseñamos la mejor estrategia legal para tu situación particular y te acompañamos en todo el proceso.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h4>Resultado</h4>
+        <p>Trabajamos hasta lograr el resultado que merecés: la indemnización o el reconocimiento de tus derechos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- SUCURSALES -->
+<section class="sucursales" id="sucursales">
+  <div style="max-width:1200px;margin:0 auto;">
+    <span class="section-label">Estamos cerca tuyo</span>
+    <h2 class="section-title">Nuestras sucursales</h2>
+    <p class="section-sub">Tres sedes en la Costa Atlántica para que nunca tengas que ir lejos a defender tus derechos.</p>
+    <div class="divider"></div>
+  </div>
+
+  <div class="suc-grid">
+    <div class="suc-card">
+      <div class="suc-num">Sucursal 01</div>
+      <div class="suc-city">Gral. Madariaga</div>
+      <div class="suc-address">Mitre 436<br />General Madariaga, Buenos Aires</div>
+      <div class="suc-divider"></div>
+      <a href="https://maps.google.com/?q=Mitre+436+General+Madariaga" target="_blank" class="suc-map">
+        Ver en mapa →
+      </a>
+    </div>
+    <div class="suc-card">
+      <div class="suc-num">Sucursal 02</div>
+      <div class="suc-city">Mar de Ajo</div>
+      <div class="suc-address">Av. Tucumán 1279<br />Mar de Ajo, Buenos Aires</div>
+      <div class="suc-divider"></div>
+      <a href="https://maps.google.com/?q=Av.+Tucumán+1279+Mar+de+Ajo" target="_blank" class="suc-map">
+        Ver en mapa →
+      </a>
+    </div>
+    <div class="suc-card">
+      <div class="suc-num">Sucursal 03</div>
+      <div class="suc-city">Pinamar</div>
+      <div class="suc-address">Jason 1371, 2° piso<br />Pinamar, Buenos Aires</div>
+      <div class="suc-divider"></div>
+      <a href="https://maps.google.com/?q=Jason+1371+Pinamar" target="_blank" class="suc-map">
+        Ver en mapa →
+      </a>
+    </div>
+  </div>
+
+  <div class="horarios-box">
+    <div>
+      <div class="horarios-title">🕐 Horarios de atención</div>
+      <div class="horarios-sub">Todas las sucursales</div>
+    </div>
+    <div class="horarios-items">
+      <div class="horarios-item">
+        <span class="horarios-days">Lun · Mié · Vie</span>
+        <span class="horarios-time">8:00 – 13:00 hs</span>
+      </div>
+      <div class="horarios-item">
+        <span class="horarios-days">Mar · Jue</span>
+        <span class="horarios-time">16:00 – 20:00 hs</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CTA -->
+<section class="cta-section" id="contacto">
+  <span class="section-label">Contacto</span>
+  <h2 class="section-title">¿Creés que tenés un caso?</h2>
+  <p>No esperes más. En materia laboral, los plazos son importantes. Escribinos ahora y te respondemos rápido, sin vueltas y sin costo.</p>
+  <a class="btn-primary" style="font-size:1.05rem;padding:18px 36px;" href="https://wa.me/549?text=Hola%2C%20quisiera%20hacer%20una%20consulta%20gratuita%20sobre%20mi%20caso." target="_blank" rel="noopener">
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.556 4.122 1.527 5.854L0 24l6.335-1.511A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.003-1.37l-.36-.214-3.728.889.926-3.618-.236-.373A9.818 9.818 0 0 1 2.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/></svg>
+    Consulta gratuita ahora
+  </a>
+  <br />
+  <span class="cta-free">La consulta es <span>100% gratuita y sin compromiso</span>. Te respondemos en minutos.</span>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <h3>LÓPEZ MALLO & ASOCIADOS</h3>
+      <p>Estudio jurídico especializado en Derecho Laboral. Accidentes de trabajo, ART, despidos y enfermedades profesionales. Partido de la Costa.</p>
+    </div>
+    <div class="footer-links">
+      <h4>Especialidades</h4>
+      <ul>
+        <li><a href="#servicios">Accidentes de Trabajo</a></li>
+        <li><a href="#servicios">Enfermedades Profesionales</a></li>
+        <li><a href="#servicios">Despidos</a></li>
+        <li><a href="#servicios">Trabajo en Negro</a></li>
+        <li><a href="#servicios">Reclamos ART</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Estudio</h4>
+      <ul>
+        <li><a href="#quienes-somos">Quiénes somos</a></li>
+        <li><a href="#proceso">Cómo trabajamos</a></li>
+        <li><a href="#sucursales">Sucursales</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="https://wa.me/549" target="_blank" rel="noopener">📲 WhatsApp</a></li>
+        <li><a href="https://www.instagram.com/estudiojuridicolopezmallo/" target="_blank" rel="noopener">📸 @estudiojuridicolopezmallo</a></li>
+        <li><a href="#sucursales">📍 Madariaga · Mar de Ajo · Pinamar</a></li>
+        <li><a href="https://wa.me/549?text=Hola%2C%20quisiera%20una%20consulta%20gratuita." target="_blank" rel="noopener">💬 Consulta gratis</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 López Mallo & Asociados. Todos los derechos reservados. &nbsp;|&nbsp; <a href="https://www.instagram.com/estudiojuridicolopezmallo/" target="_blank" rel="noopener">Instagram</a></p>
+  </div>
+</footer>
+
+
+<!-- WhatsApp flotante -->
+<a class="wa-float" href="https://wa.me/549?text=Hola%2C%20quisiera%20consultar%20sobre%20mi%20caso." target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.124.556 4.122 1.527 5.854L0 24l6.335-1.511A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.003-1.37l-.36-.214-3.728.889.926-3.618-.236-.373A9.818 9.818 0 0 1 2.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/></svg>
+</a>
+
+
+<script>
+  if (history.scrollRestoration) history.scrollRestoration = 'manual';
+  window.scrollTo(0, 0);
+
+  function toggleMobileMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+  function closeMobileMenu() {
+    document.getElementById('mobileMenu').classList.remove('open');
+  }
+  // Cerrar al tocar fuera
+  document.addEventListener('click', function(e) {
+    const menu = document.getElementById('mobileMenu');
+    const hamburger = document.querySelector('.hamburger');
+    if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+      menu.classList.remove('open');
+    }
+  });
+</script>
+</body>
+</html>
